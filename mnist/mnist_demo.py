@@ -15,6 +15,8 @@ BATCH_SIZE = 50
 STEPS = 20000
 LEARNING_RATE = 1e-4
 
+MNIST_DATA_PATH = '../../MNIST_data'
+
 
 def get_next_batch(mnist, get_train_batch=True):
     if get_train_batch:
@@ -58,7 +60,7 @@ def get_loss(probs,labels):
 
 
 if __name__ == '__main__':
-    mnist = input_data.read_data_sets('../../MNIST_data', one_hot=True)
+    mnist = input_data.read_data_sets(MNIST_DATA_PATH, one_hot=True)
     with tf.Session() as sess:
         images_placeholder = tf.placeholder(tf.float32, [None, 28, 28, 1], name='images_placeholder')
         labels_palceholder = tf.placeholder(tf.float32, [None, 10], name='labels_placeholder')
